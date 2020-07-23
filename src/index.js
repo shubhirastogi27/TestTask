@@ -46,13 +46,13 @@ export default class MainApp extends React.Component {
         ],
       },
       btcusd: 0,
-      active: "Yearly",
+      active: "Today",
       loader: true,
     };
   }
 
   componentDidMount() {
-    this.getYearlyData();
+    this.getToday();
     const subscribe = {
       type: "subscribe",
       channels: [
@@ -239,15 +239,16 @@ export default class MainApp extends React.Component {
                   padding: "2%",
                 }}
               >
+             
+           
                 <View style={styling.tabs}>
-                  <TouchableOpacity onPress={this.getYearlyData}>
+                  <TouchableOpacity onPress={this.getToday}>
                     <Text
                       style={{
-                        color:
-                          this.state.active === "Yearly" ? "pink" : "black",
+                        color: this.state.active === "Today" ? "pink" : "black",
                       }}
                     >
-                      Yearly
+                      Today
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -264,13 +265,14 @@ export default class MainApp extends React.Component {
                   </TouchableOpacity>
                 </View>
                 <View style={styling.tabs}>
-                  <TouchableOpacity onPress={this.getToday}>
+                  <TouchableOpacity onPress={this.getYearlyData}>
                     <Text
                       style={{
-                        color: this.state.active === "Today" ? "pink" : "black",
+                        color:
+                          this.state.active === "Yearly" ? "pink" : "black",
                       }}
                     >
-                      Today
+                      Yearly
                     </Text>
                   </TouchableOpacity>
                 </View>
